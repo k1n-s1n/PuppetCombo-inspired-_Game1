@@ -6,7 +6,7 @@ Running log for the report: scripts written and third-party assets used (with so
 
 | Script | Location | What it does |
 |---|---|---|
-| _(none yet)_ | | |
+| `FirstPersonController.cs` | `Assets/_Project/Scripts/` | WASD movement, mouse look, Shift to walk faster, using a CharacterController (collides with walls and slides along them, follows slopes, gravity). Mouse sensitivity, speeds and look limit are exposed in the Inspector. Uses the Input System package (`Keyboard.current` / `Mouse.current`). Esc frees the cursor, clicking recaptures it. |
 
 ## Third-party assets
 
