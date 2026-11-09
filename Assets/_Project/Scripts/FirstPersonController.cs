@@ -39,6 +39,15 @@ public class FirstPersonController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+
+        // If the camera wasn't dragged into the Inspector slot, use the camera inside the Player.
+        if (cameraTransform == null)
+        {
+            Camera childCamera = GetComponentInChildren<Camera>();
+            if (childCamera != null) cameraTransform = childCamera.transform;
+            else Debug.LogError("FirstPersonController: no camera found. Add a Camera as a child of the Player.");
+        }
+
         LockCursor(true);
     }
 

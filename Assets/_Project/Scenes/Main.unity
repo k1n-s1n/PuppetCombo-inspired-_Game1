@@ -526,6 +526,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8541924861246611538, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
+--- !u!114 &292055847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571833640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3e00cd91c029646925f68b892b2e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Door
+  openAngle: 95
+  swingSpeed: 180
+  linkedDoor: {fileID: 0}
+  isLocked: 0
+  lockedMessage: It's locked.
 --- !u!64 &345699583
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -570,6 +587,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5607592944482165923, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
+--- !u!114 &360068795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571833642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3e00cd91c029646925f68b892b2e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Door
+  openAngle: 95
+  swingSpeed: 180
+  linkedDoor: {fileID: 0}
+  isLocked: 0
+  lockedMessage: It's locked.
 --- !u!64 &372201285
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -900,6 +934,7 @@ GameObject:
   - component: {fileID: 584536528}
   - component: {fileID: 584536527}
   - component: {fileID: 584536526}
+  - component: {fileID: 584536529}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -924,7 +959,7 @@ MonoBehaviour:
   gravity: -9.81
   mouseSensitivity: 0.08
   maxLookAngle: 80
-  cameraTransform: {fileID: 1703495244}
+  cameraTransform: {fileID: 7860326810348528423}
   canControl: 1
 --- !u!143 &584536527
 CharacterController:
@@ -964,9 +999,25 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1703495244}
+  - {fileID: 7860326810348528423}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &584536529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584536525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b633aca9e99c5479327323db585385, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractor
+  playerCamera: {fileID: 0}
+  interactDistance: 2.5
+  showCrosshair: 1
+  messageDuration: 2.5
 --- !u!64 &592994008
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1231,6 +1282,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4081569171312217755, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
+--- !u!114 &845147688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571833643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3e00cd91c029646925f68b892b2e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Door
+  openAngle: 95
+  swingSpeed: 180
+  linkedDoor: {fileID: 1622968855}
+  isLocked: 0
+  lockedMessage: It's locked.
 --- !u!64 &847740398
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1715,6 +1783,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4755859003523093112, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
+--- !u!114 &1224109283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571833641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3e00cd91c029646925f68b892b2e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Door
+  openAngle: 95
+  swingSpeed: 180
+  linkedDoor: {fileID: 0}
+  isLocked: 0
+  lockedMessage: It's locked.
 --- !u!64 &1270486924
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2212,6 +2297,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2797885513832951029, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
       propertyPath: m_Name
       value: 6twelve_Store
@@ -2316,18 +2405,33 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8068073526183931155, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1493389931}
+    - targetCorrespondingSourceObject: {fileID: -8068073526183931155, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1622968855}
     - targetCorrespondingSourceObject: {fileID: 2834452149904478141, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 818145639}
+    - targetCorrespondingSourceObject: {fileID: 2834452149904478141, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 845147688}
     - targetCorrespondingSourceObject: {fileID: -7254820153963750256, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 180549086}
+    - targetCorrespondingSourceObject: {fileID: -7254820153963750256, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 360068795}
     - targetCorrespondingSourceObject: {fileID: 5291649128288537426, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 570067689}
+    - targetCorrespondingSourceObject: {fileID: 5291649128288537426, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1224109283}
     - targetCorrespondingSourceObject: {fileID: -1498071466005499791, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 554243072}
+    - targetCorrespondingSourceObject: {fileID: -1498071466005499791, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 292055847}
     - targetCorrespondingSourceObject: {fileID: -2480040570885891733, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1925779031}
@@ -3277,6 +3381,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5525771462158643772, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
+--- !u!114 &1622968855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571833644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3e00cd91c029646925f68b892b2e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Door
+  openAngle: 95
+  swingSpeed: 180
+  linkedDoor: {fileID: 845147688}
+  isLocked: 0
+  lockedMessage: It's locked.
 --- !u!64 &1623936029
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3365,98 +3486,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2805047099403102785, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
---- !u!1 &1703495243
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1703495244}
-  - component: {fileID: 1703495246}
-  - component: {fileID: 1703495245}
-  m_Layer: 0
-  m_Name: PlayerCamera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1703495244
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703495243}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.65, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 584536528}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1703495245
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703495243}
-  m_Enabled: 1
---- !u!20 &1703495246
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703495243}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_Iso: 200
-  m_ShutterSpeed: 0.005
-  m_Aperture: 16
-  m_FocusDistance: 10
-  m_FocalLength: 50
-  m_BladeCount: 5
-  m_Curvature: {x: 2, y: 11}
-  m_BarrelClipping: 0.25
-  m_Anamorphism: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.05
-  far clip plane: 1000
-  field of view: 65
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
 --- !u!64 &1716904170
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3875,6 +3904,168 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2034942076556352120, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
+--- !u!20 &1287550322685333369
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7099768836731486298}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.05
+  far clip plane: 1000
+  field of view: 65
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!81 &5042563922947594514
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7099768836731486298}
+  m_Enabled: 1
+--- !u!114 &5438011032972400750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7099768836731486298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e2a4358e02d4f30bac5028d43ad851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BadTVEffect
+  on: 1
+  thickDistort: 0.72
+  fineDistort: 2.38
+  material: {fileID: 2100000, guid: 0b2b1aef91c2345ab8d2fecf276fba3c, type: 2}
+--- !u!114 &6420544829087199260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7099768836731486298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88571dab8b35d4986bd57c94d47728a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScanlinesEffect
+  on: 1
+  grayscale: 0
+  amount: 866
+  strength: 0.9
+  noise: 0.4
+  speed: 5
+  material: {fileID: 2100000, guid: 34707840cacc149bbae1e03a783fcb40, type: 2}
+--- !u!114 &6475243560646250476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7099768836731486298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94e3e00c7db294d8489f45358437019e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PosterizeEffect
+  on: 1
+  level: 97
+  material: {fileID: 2100000, guid: 84da12828e118449c8833ae1aa31804d, type: 2}
+--- !u!1 &7099768836731486298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7860326810348528423}
+  - component: {fileID: 1287550322685333369}
+  - component: {fileID: 5042563922947594514}
+  - component: {fileID: 7385085599593539122}
+  - component: {fileID: 6475243560646250476}
+  - component: {fileID: 6420544829087199260}
+  - component: {fileID: 5438011032972400750}
+  m_Layer: 0
+  m_Name: PlayerCamera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &7385085599593539122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7099768836731486298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d54c6bfda817a46eb9d976719fd25909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RGBShiftEffect
+  on: 1
+  amount: 0.007
+  speed: 0
+  material: {fileID: 2100000, guid: 668e4ca5bbe07424e90bffec7dd41598, type: 2}
+--- !u!4 &7860326810348528423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7099768836731486298}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.65, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 584536528}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
