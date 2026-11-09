@@ -16,8 +16,8 @@ Running log for the report: scripts written and third-party assets used (with so
 | Asset | Author | Source | Licence | Location in project | Notes |
 |---|---|---|---|---|---|
 | 6TWELVE (PSX-style convenience store, with road, parking lot and forest backdrop) | Elbolillo (Sketchfab: Elbolilloduro) | https://sketchfab.com/3d-models/6twelve-8c2c49cab08e402d8681434a4ade4ed0 | CC Attribution 4.0 | `Assets/ThirdParty/6twelve/` | Imported the author's original FBX + textures (from `source/6twelve.rar` in the Sketchfab download). ~18.8k triangles, 88 materials. Kept unmodified. |
-| psx_retroshader (PS1-style shaders, cPrecision image effect) | dsoft20 | https://github.com/dsoft20/psx_retroshader | MIT | `Assets/psxshaders/` | Imported by the developer. |
-| PostEffects (BadTV, RGBShift, Posterize, Scanlines, etc.) + WebCam demo | _TODO: confirm source_ | _TODO_ | _TODO_ | `Assets/PostEffects/`, `Assets/WebCam/` | Imported by the developer; RGBShift, Posterize, Scanlines and BadTV are used on the PlayerCamera for the VHS look. |
+| psx_retroshader (PS1-style shaders, cPrecision image effect) | dsoft20 | https://github.com/dsoft20/psx_retroshader | MIT | `Assets/ThirdParty/psx_retroshader/` | Imported by the developer, not used yet (may be used later). Removed its obsolete `UnityVS/` Visual Studio plugin DLLs (failed to load in Unity 6). |
+| Unity_PostEffect (BadTV, RGBShift, Posterize, Scanlines, etc. + WebCam demo) | tasdidahmedtah | https://github.com/tasdidahmedtah/Unity_PostEffect | No licence stated in repo | `Assets/ThirdParty/Unity_PostEffect/` | Imported by the developer. RGBShift, Posterize, Scanlines and BadTV are on the PlayerCamera for the VHS look. Its demo scene (`Main.unity`) was removed. |
 
 ## Asset findings / to-do
 
