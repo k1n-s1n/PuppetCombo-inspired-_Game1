@@ -27,6 +27,10 @@ Shader "Project/NightSky"
         _MoonSize ("Moon size (radians)", Range(0.005, 0.1)) = 0.035
         _MoonGlow ("Moon glow strength", Range(0, 1)) = 0.25
         _MoonGlowSize ("Moon glow size", Range(1, 15)) = 6
+
+        [Header(Fog)]
+        _FogHeight ("How high the fog reaches above the horizon", Range(0.01, 0.8)) = 0.2
+        _FogStrength ("Fog strength at the horizon (0 = off)", Range(0, 1)) = 1
     }
 
     SubShader
@@ -41,6 +45,9 @@ Shader "Project/NightSky"
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+            // Makes Unity compile versions of this shader for each fog mode (off/linear/exp/exp2),
+            // so we can tell below whether fog is switched on in the Lighting settings.
+            #pragma multi_compile_fog
             #include "UnityCG.cginc"
 
             fixed4 _ZenithColor, _HorizonColor, _GroundColor;
@@ -50,6 +57,7 @@ Shader "Project/NightSky"
             float4 _MoonDirection;
             fixed4 _MoonColor;
             float _MoonSize, _MoonGlow, _MoonGlowSize;
+            float _FogHeight, _FogStrength;
 
             struct appdata { float4 vertex : POSITION; };
             struct v2f
@@ -128,6 +136,15 @@ Shader "Project/NightSky"
 
                 col += _MoonColor.rgb * glow;
                 col = lerp(col, _MoonColor.rgb, disc);
+
+                // 4. Fog: Unity never applies fog to the skybox, so wherever the sky shows
+                //    through a gap (e.g. down the road) there'd be a dark hole in the fog.
+                //    Fade the sky into the scene's fog colour (unity_FogColor, set in the
+                //    Lighting window) near and below the horizon, so it matches fogged objects.
+                #if defined(FOG_LINEAR) || defined(FOG_EXP) || defined(FOG_EXP2)
+                    float fogAmount = _FogStrength * (1 - smoothstep(0, _FogHeight, up));
+                    col = lerp(col, unity_FogColor.rgb, fogAmount);
+                #endif
 
                 return fixed4(col, 1);
             }
