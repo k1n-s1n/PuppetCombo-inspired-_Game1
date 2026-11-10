@@ -16,7 +16,9 @@ public class StoryManager : MonoBehaviour
     {
         Arrive,       // just stepped out of the car, walking to the store
         UseToilet,    // inside the store, objective "Use the toilet"
-        GrabBasket,   // finished at the toilet (the jumpscare will go here, Tier 2), objective "Grab a basket"
+        LeaveToilet,  // finished at the toilet, walking out of the bathroom
+        Jumpscare,    // the desperate customer jumpscare is playing (Jumpscare.cs)
+        GrabBasket,   // objective "Grab a basket"
         GrabSnacks,   // holding the basket, collecting every ShopItem
         PayForItems,  // everything collected, objective "Pay for your items"
         Checkout,     // talking to the cashier (Cashier.cs runs this part)
@@ -25,6 +27,9 @@ public class StoryManager : MonoBehaviour
 
     [Tooltip("Where the player is in the story right now (shown for debugging; changes while playing).")]
     public Stage stage = Stage.Arrive;
+
+    [Tooltip("The jumpscare customer, triggered when the player walks out of the toilet.")]
+    public Jumpscare jumpscare;
 
     [Header("Opening")]
     [Tooltip("Seconds after the game starts before the first subtitle appears.")]
@@ -84,9 +89,20 @@ public class StoryManager : MonoBehaviour
         }
         else if (stage == Stage.UseToilet && id == "UsedToilet")
         {
-            // ToiletUse has already queued the "What a mess..." line.
+            // ToiletUse has already queued the "What a mess..." line. No objective: the player just walks out.
+            stage = Stage.LeaveToilet;
+            GameUI.Instance.SetObjective("");
+        }
+        else if (stage == Stage.LeaveToilet && id == "LeftToilet")
+        {
+            stage = Stage.Jumpscare;
+            GameUI.Instance.ClearSubtitles();   // the jumpscare interrupts whatever was being said
+            jumpscare.Play(FindAnyObjectByType<PlayerInteractor>());
+        }
+        else if (stage == Stage.Jumpscare && id == "JumpscareFinished")
+        {
             stage = Stage.GrabBasket;
-            StartCoroutine(SetObjectiveAfterSpeech("Grab a basket"));
+            GameUI.Instance.SetObjective("Grab a basket");
         }
         else if (stage == Stage.GrabBasket && id == "PickedUpBasket")
         {
