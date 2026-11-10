@@ -1611,7 +1611,7 @@ GameObject:
   - component: {fileID: 584536527}
   - component: {fileID: 584536526}
   - component: {fileID: 584536529}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4256,6 +4256,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -7318072807127031672, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1892229941}
+    - targetCorrespondingSourceObject: {fileID: -7318072807127031672, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1892229945}
     - targetCorrespondingSourceObject: {fileID: 7856331651582583681, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 778613680}
@@ -5588,6 +5591,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8928055837537713139, guid: affa775ddd742f5449117aca22aa34c3, type: 3}
+--- !u!114 &1892229945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571833577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def02111a6937bc42a13151b04bcfcf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToiletUse
+  holdTime: 3
+  finishedLine: What a mess... not my problem, heh.
 --- !u!1 &1902230657
 GameObject:
   m_ObjectHideFlags: 0
@@ -5621,6 +5638,7 @@ MonoBehaviour:
   openingDelay: 1.5
   openingLine: Ugh. Why am I always the one doing the snack run? They better pay
     me back this time.
+  enterStoreLine: Man, I'm bursting... there should be a toilet in here somewhere.
 --- !u!4 &1902230659
 Transform:
   m_ObjectHideFlags: 0

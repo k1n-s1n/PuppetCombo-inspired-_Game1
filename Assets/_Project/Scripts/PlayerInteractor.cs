@@ -41,11 +41,17 @@ public class PlayerInteractor : MonoBehaviour
     {
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
 
+        // DefaultRaycastLayers = every layer except "Ignore Raycast". The Player is on that layer,
+        // so the ray doesn't hit the player's own body when looking down.
         // QueryTriggerInteraction.Collide also lets the ray hit "trigger" colliders (used for pickups later).
-        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, ~0, QueryTriggerInteraction.Collide))
+        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Collide))
         {
             // The script may be on the object we hit or on one of its parents.
-            return hit.collider.GetComponentInParent<IInteractable>();
+            IInteractable found = hit.collider.GetComponentInParent<IInteractable>();
+
+            // An empty prompt means "can't be used right now" (e.g. the toilet before the story gets there).
+            if (found != null && !string.IsNullOrEmpty(found.GetPrompt()))
+                return found;
         }
         return null;
     }

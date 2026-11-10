@@ -16,6 +16,7 @@ public class StoryManager : MonoBehaviour
     {
         Arrive,      // just stepped out of the car, walking to the store
         UseToilet,   // inside the store, objective "Use the toilet"
+        GrabBasket,  // finished at the toilet (the jumpscare will go here, Tier 2), objective "Grab a basket"
     }
 
     [Tooltip("Where the player is in the story right now (shown for debugging; changes while playing).")]
@@ -26,6 +27,9 @@ public class StoryManager : MonoBehaviour
     public float openingDelay = 1.5f;
 
     [TextArea] public string openingLine = "Ugh. Why am I always the one doing the snack run? They better pay me back this time.";
+
+    [Header("Entering the store")]
+    [TextArea] public string enterStoreLine = "Man, I'm bursting... there should be a toilet in here somewhere.";
 
     void Awake()
     {
@@ -42,6 +46,10 @@ public class StoryManager : MonoBehaviour
     IEnumerator Opening()
     {
         yield return new WaitForSeconds(openingDelay);
+
+        // Skip the opening if the story has already moved on (e.g. the player rushed inside).
+        if (stage != Stage.Arrive) yield break;
+
         GameUI.Instance.Say("You", openingLine);
         GameUI.Instance.SetObjective("Head into the store");
     }
@@ -52,8 +60,26 @@ public class StoryManager : MonoBehaviour
     {
         if (stage == Stage.Arrive && id == "EnteredStore")
         {
+            // Change stage straight away (so this can't fire twice), but show the new
+            // objective only after the player has said their line.
             stage = Stage.UseToilet;
-            GameUI.Instance.SetObjective("Use the toilet");
+            GameUI.Instance.Say("You", enterStoreLine);
+            StartCoroutine(SetObjectiveAfterSpeech("Use the toilet"));
         }
+        else if (stage == Stage.UseToilet && id == "UsedToilet")
+        {
+            // ToiletUse has already queued the "What a mess..." line.
+            stage = Stage.GrabBasket;
+            StartCoroutine(SetObjectiveAfterSpeech("Grab a basket"));
+        }
+    }
+
+    // Hide the objective, wait until all queued subtitles have finished, then show the new one.
+    IEnumerator SetObjectiveAfterSpeech(string objective)
+    {
+        GameUI.Instance.SetObjective("");
+        while (GameUI.Instance.IsSpeaking)
+            yield return null;   // wait one frame, then check again
+        GameUI.Instance.SetObjective(objective);
     }
 }
