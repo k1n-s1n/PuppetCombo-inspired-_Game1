@@ -63,3 +63,20 @@ Running log for the report: scripts written and third-party assets used (with so
 - Interior already has several areas: shop floor, counter, bathroom (toilet, sink, mirror), office (chair, monitor, keyboard), storage (boxes, fuse boxes, mop/broom).
 - Done: `Glass` material (shop windows, door panes, freezer lids) set to Standard Transparent, light blue tint, glossy; window glass casts no shadows.
 - Done: re-linked 3 lost textures; alpha-textured materials set to Cutout; FBX light import disabled (Blender lights came in at intensity ~1800).
+
+## Progress (end of Tuesday 10 Nov 2026)
+
+The whole chapter plays from start to finish in Play mode:
+car (plates 33010198) -> "Head into the store" -> enter, "bursting" line -> toilet aiming minigame -> leave toilet, redneck jumpscare (toilet then locked) -> grab basket (sparkle) -> collect crisps, beer carton, chocolate bar (sparkles, 0/3 counter, items shown in basket) -> pay: cashier conversation with name choice (both branches) -> ID card with student number -> paper bag -> "That guy gave me the creeps." -> E on car -> fade, "END OF CHAPTER 1".
+Ambient: customer girl wanders the aisles and stops if you block her; cashier, customer and redneck stare at the player (head tracking).
+
+All tiers in CLAUDE.md are built. All third-party assets are credited above (no TBCs).
+
+### Still to do
+- Full uninterrupted keyboard playthrough to catch anything that only shows up in a real run (features were tested individually).
+- Sound (optional, if time): jumpscare sting (`Jumpscare.sting` slot is ready), ambience, door sounds.
+- Thursday: record the video (max 5 min, pan to the car's front plate at the start, show the ID card) and write the 3-page report (scripts table and sources are in this file).
+
+### Known quirks
+- "PlayerLoop internal function has been called recursively" errors only appear during automated testing through the MCP bridge, not in normal play. Clear the console before recording.
+- Characters have no animation clips: the cashier's arms are lowered by `ArmPose`, the customer walks with the procedural `SimpleWalkCycle`.
