@@ -51,6 +51,26 @@ public class FirstPersonController : MonoBehaviour
         LockCursor(true);
     }
 
+    // Turns the player (left/right) and tilts the camera (up/down) so the camera looks at a point.
+    // Used by scripted moments, e.g. the toilet minigame looking down at the bowl.
+    public void LookAt(Vector3 point)
+    {
+        Vector3 dir = point - cameraTransform.position;
+        Vector3 flat = new Vector3(dir.x, 0f, dir.z);
+        if (flat.sqrMagnitude > 0.0001f) transform.rotation = Quaternion.LookRotation(flat);
+        pitch = Mathf.Clamp(-Mathf.Atan2(dir.y, flat.magnitude) * Mathf.Rad2Deg, -maxLookAngle, maxLookAngle);
+        cameraTransform.localRotation = Quaternion.Euler(pitch, 0f, 0f);
+    }
+
+    // Moves the player to a spot instantly. The CharacterController must be switched off while
+    // we set the position directly, otherwise it snaps the player back.
+    public void Teleport(Vector3 position)
+    {
+        controller.enabled = false;
+        transform.position = position;
+        controller.enabled = true;
+    }
+
     void Update()
     {
         Keyboard keyboard = Keyboard.current;
