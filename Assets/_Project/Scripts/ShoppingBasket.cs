@@ -37,6 +37,7 @@ public class ShoppingBasket : MonoBehaviour, IInteractable
         // Remove its colliders: a held object shouldn't bump into things or block the E ray.
         RemoveColliders(gameObject);
         if (fillLight != null) fillLight.enabled = true;
+        ShopItem.HideSparkles(gameObject);
 
         StoryManager.Instance.OnEvent("PickedUpBasket");
     }

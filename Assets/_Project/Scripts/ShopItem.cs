@@ -37,7 +37,15 @@ public class ShopItem : MonoBehaviour, IInteractable
         }
 
         collected = true;
+        HideSparkles(gameObject);
         ShoppingBasket.Held.AddItem(this);
         StoryManager.Instance.OnEvent("ItemCollected");
+    }
+
+    // Switches off any objective sparkle on this object (it's been found, no need to point it out any more).
+    public static void HideSparkles(GameObject obj)
+    {
+        foreach (ObjectiveSparkle s in obj.GetComponentsInChildren<ObjectiveSparkle>())
+            s.gameObject.SetActive(false);
     }
 }

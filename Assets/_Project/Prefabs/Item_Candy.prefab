@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4845365676460760570}
   - component: {fileID: 2371786640313508104}
-  - component: {fileID: 1590177560887714587}
+  - component: {fileID: 3679584557519414922}
   m_Layer: 0
   m_Name: Item_Candy
   m_TagString: Untagged
@@ -32,6 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1406688850675934174}
+  - {fileID: 97920879219940099}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2371786640313508104
@@ -47,9 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopItem
   itemName: chocolate bar
-  positionInBasket: {x: 0.02, y: 0.17, z: -0.1}
-  rotationInBasket: {x: -30, y: 20, z: 0}
---- !u!65 &1590177560887714587
+  positionInBasket: {x: -0.175, y: 0.13, z: -0.06}
+  rotationInBasket: {x: -40, y: 180, z: 90}
+--- !u!65 &3679584557519414922
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,8 +69,57 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.15039137, y: 0.039675117, z: 0.057425044}
-  m_Center: {x: -0.000000007450581, y: 0.0050202715, z: 0.0000000055879354}
+  m_Size: {x: 0.05742506, y: 0.15039138, z: 0.03967511}
+  m_Center: {x: 0.0000000060535985, y: 0.059999987, z: 0.000020270934}
+--- !u!1 &3248511709520104527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 97920879219940099}
+  - component: {fileID: 5777640054943016378}
+  m_Layer: 0
+  m_Name: Sparkle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &97920879219940099
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3248511709520104527}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0000000060535985, y: 0.09009783, z: 0.064857826}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4845365676460760570}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5777640054943016378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3248511709520104527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d997cd93b2f81541a9f494b0512133b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectiveSparkle
+  material: {fileID: 2100000, guid: 2ef12bf9d060c464992b901694d87aee, type: 2}
+  activeStages: 05000000
+  interval: 1.6
+  twinkleTime: 0.6
+  size: 0.4
 --- !u!1 &8355655037604198950
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,8 +146,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8355655037604198950}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.005, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

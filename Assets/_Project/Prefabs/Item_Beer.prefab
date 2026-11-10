@@ -540,6 +540,55 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5623262658609077024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7247361865715567094}
+  - component: {fileID: 8972847142751954308}
+  m_Layer: 0
+  m_Name: Sparkle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7247361865715567094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623262658609077024}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.17409079, z: 0.1325}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9023440611082219283}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8972847142751954308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623262658609077024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d997cd93b2f81541a9f494b0512133b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectiveSparkle
+  material: {fileID: 2100000, guid: 2ef12bf9d060c464992b901694d87aee, type: 2}
+  activeStages: 05000000
+  interval: 1.6
+  twinkleTime: 0.6
+  size: 0.4
 --- !u!1 &6820698456824360625
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,6 +718,7 @@ Transform:
   - {fileID: 5956504646469386537}
   - {fileID: 6579269397304087263}
   - {fileID: 656722773461602835}
+  - {fileID: 7247361865715567094}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2341516141300257965
@@ -684,8 +734,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopItem
   itemName: beer
-  positionInBasket: {x: 0.06, y: 0.012, z: 0.05}
-  rotationInBasket: {x: 0, y: 0, z: 0}
+  positionInBasket: {x: 0.11, y: 0.012, z: 0.015}
+  rotationInBasket: {x: 0, y: 90, z: 0}
 --- !u!65 &6487502597379139054
 BoxCollider:
   m_ObjectHideFlags: 0
