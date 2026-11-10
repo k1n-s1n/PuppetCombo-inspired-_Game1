@@ -140,8 +140,18 @@ public class GameUI : MonoBehaviour
         bool flashing = sinceChange < objectiveFlashTime && Mathf.Repeat(sinceChange * 4f, 1f) < 0.5f;
         Color textColour = flashing ? Color.yellow : Color.white;
 
-        Rect rect = new Rect(0f, Screen.height * 0.04f, Screen.width, 40f);
         string text = "Objective: " + objective;
+
+        // Size a dark strip to fit the text (plus padding) so it's readable over bright signs.
+        Vector2 textSize = objectiveStyle.CalcSize(new GUIContent(text));
+        float stripWidth = textSize.x + 40f;
+        float stripHeight = textSize.y + 12f;
+        Rect strip = new Rect((Screen.width - stripWidth) * 0.5f, Screen.height * 0.04f, stripWidth, stripHeight);
+        GUI.color = new Color(0f, 0f, 0f, 0.6f);
+        GUI.DrawTexture(strip, Texture2D.whiteTexture);
+        GUI.color = Color.white;
+
+        Rect rect = new Rect(0f, strip.y, Screen.width, stripHeight);
 
         // Black shadow first, then the coloured text on top, so it's readable on any background.
         objectiveStyle.normal.textColor = Color.black;
