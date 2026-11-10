@@ -67,7 +67,7 @@ public class StoryManager : MonoBehaviour
         if (stage != Stage.Arrive) yield break;
 
         GameUI.Instance.Say("You", openingLine);
-        GameUI.Instance.SetObjective("Head into the store");
+        StartCoroutine(SetObjectiveAfterSpeech("Head into the store"));
     }
 
     // Called by StoryTrigger and the interactable scripts when something happens in the world.
