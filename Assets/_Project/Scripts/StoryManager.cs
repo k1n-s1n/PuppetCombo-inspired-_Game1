@@ -19,6 +19,8 @@ public class StoryManager : MonoBehaviour
         GrabBasket,   // finished at the toilet (the jumpscare will go here, Tier 2), objective "Grab a basket"
         GrabSnacks,   // holding the basket, collecting every ShopItem
         PayForItems,  // everything collected, objective "Pay for your items"
+        Checkout,     // talking to the cashier (Cashier.cs runs this part)
+        ReturnToCar,  // got the bag, objective "Head back to your car"
     }
 
     [Tooltip("Where the player is in the story right now (shown for debugging; changes while playing).")]
@@ -35,6 +37,10 @@ public class StoryManager : MonoBehaviour
 
     [Header("Shopping")]
     [TextArea] public string allItemsLine = "That should do it. Time to pay and get out of here.";
+
+    [Header("Leaving")]
+    [TextArea] public string leftStoreLine = "That guy gave me the creeps.";
+    private bool saidLeftStoreLine;
 
     private int totalItems;      // how many ShopItems are in the scene
     private int collectedItems;  // how many are in the basket
@@ -100,6 +106,21 @@ public class StoryManager : MonoBehaviour
                 GameUI.Instance.Say("You", allItemsLine);
                 StartCoroutine(SetObjectiveAfterSpeech("Pay for your items"));
             }
+        }
+        else if (stage == Stage.PayForItems && id == "CheckoutStarted")
+        {
+            stage = Stage.Checkout;
+            GameUI.Instance.SetObjective("");   // no objective during the conversation
+        }
+        else if (stage == Stage.Checkout && id == "CheckoutFinished")
+        {
+            stage = Stage.ReturnToCar;
+            GameUI.Instance.SetObjective("Head back to your car");
+        }
+        else if (stage == Stage.ReturnToCar && id == "LeftStore" && !saidLeftStoreLine)
+        {
+            saidLeftStoreLine = true;
+            GameUI.Instance.Say("You", leftStoreLine);
         }
     }
 

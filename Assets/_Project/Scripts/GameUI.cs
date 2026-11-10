@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 // Draws the story UI: subtitles (speech bar at the bottom) and the current objective (top of screen).
 // Put ONE of these on any object in the scene (e.g. an empty "GameUI" object).
@@ -43,9 +44,19 @@ public class GameUI : MonoBehaviour
 
     private GUIStyle subtitleStyle;
     private GUIStyle objectiveStyle;
+    private GUIStyle choiceStyle;
+
+    // Dialogue choice currently on screen (null when there isn't one).
+    private string[] choiceOptions;
 
     // True while a subtitle is on screen or waiting. Story scripts can wait on this.
     public bool IsSpeaking => showingLine || queue.Count > 0;
+
+    // True while a dialogue choice is waiting for the player to press a number key.
+    public bool IsChoosing => choiceOptions != null;
+
+    // Which option the player picked last (0 = first option), or -1 while still choosing.
+    public int ChoiceResult { get; private set; } = -1;
 
     void Awake()
     {
@@ -76,8 +87,32 @@ public class GameUI : MonoBehaviour
         objectiveChangedAt = Time.time;
     }
 
+    // Show a dialogue choice, e.g. ShowChoice("Tell him your name", "Refuse").
+    // The player answers with the number keys; read ChoiceResult once IsChoosing is false.
+    public void ShowChoice(params string[] options)
+    {
+        choiceOptions = options;
+        ChoiceResult = -1;
+    }
+
     void Update()
     {
+        // While a choice is up, check the number keys 1, 2, 3...
+        Keyboard keyboard = Keyboard.current;
+        if (choiceOptions != null && keyboard != null)
+        {
+            Key[] numberKeys = { Key.Digit1, Key.Digit2, Key.Digit3, Key.Digit4 };
+            for (int i = 0; i < choiceOptions.Length && i < numberKeys.Length; i++)
+            {
+                if (keyboard[numberKeys[i]].wasPressedThisFrame)
+                {
+                    ChoiceResult = i;
+                    choiceOptions = null;
+                    break;
+                }
+            }
+        }
+
         // Move on to the next queued line when the current one has finished.
         if (showingLine && Time.time >= lineEndsAt)
             showingLine = false;
@@ -101,6 +136,12 @@ public class GameUI : MonoBehaviour
         objectiveStyle = new GUIStyle(GUI.skin.label);
         objectiveStyle.alignment = TextAnchor.MiddleCenter;
         objectiveStyle.fontSize = Mathf.Max(14, Screen.height / 38);
+
+        choiceStyle = new GUIStyle(GUI.skin.label);
+        choiceStyle.alignment = TextAnchor.MiddleLeft;
+        choiceStyle.richText = true;
+        choiceStyle.fontSize = Mathf.Max(16, Screen.height / 32);
+        choiceStyle.normal.textColor = Color.white;
     }
 
     void OnGUI()
@@ -109,6 +150,27 @@ public class GameUI : MonoBehaviour
 
         if (showingLine) DrawSubtitle();
         if (objective != "") DrawObjective();
+        if (choiceOptions != null) DrawChoice();
+    }
+
+    void DrawChoice()
+    {
+        // A dark box in the lower middle of the screen with one numbered line per option.
+        float lineHeight = choiceStyle.fontSize * 1.8f;
+        float width = Screen.width * 0.6f;
+        float height = lineHeight * choiceOptions.Length + 20f;
+        Rect box = new Rect((Screen.width - width) * 0.5f, Screen.height * 0.84f - height, width, height);
+
+        GUI.color = new Color(0f, 0f, 0f, 0.75f);
+        GUI.DrawTexture(box, Texture2D.whiteTexture);
+        GUI.color = Color.white;
+
+        string hex = ColorUtility.ToHtmlStringRGB(speakerColour);
+        for (int i = 0; i < choiceOptions.Length; i++)
+        {
+            Rect line = new Rect(box.x + 20f, box.y + 10f + i * lineHeight, width - 40f, lineHeight);
+            GUI.Label(line, "<color=#" + hex + ">[" + (i + 1) + "]</color>  " + choiceOptions[i], choiceStyle);
+        }
     }
 
     void DrawSubtitle()
