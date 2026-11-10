@@ -14,9 +14,11 @@ public class StoryManager : MonoBehaviour
     // The story beats, in order. More are added as each feature is built.
     public enum Stage
     {
-        Arrive,      // just stepped out of the car, walking to the store
-        UseToilet,   // inside the store, objective "Use the toilet"
-        GrabBasket,  // finished at the toilet (the jumpscare will go here, Tier 2), objective "Grab a basket"
+        Arrive,       // just stepped out of the car, walking to the store
+        UseToilet,    // inside the store, objective "Use the toilet"
+        GrabBasket,   // finished at the toilet (the jumpscare will go here, Tier 2), objective "Grab a basket"
+        GrabSnacks,   // holding the basket, collecting every ShopItem
+        PayForItems,  // everything collected, objective "Pay for your items"
     }
 
     [Tooltip("Where the player is in the story right now (shown for debugging; changes while playing).")]
@@ -31,6 +33,12 @@ public class StoryManager : MonoBehaviour
     [Header("Entering the store")]
     [TextArea] public string enterStoreLine = "Man, I'm bursting... there should be a toilet in here somewhere.";
 
+    [Header("Shopping")]
+    [TextArea] public string allItemsLine = "That should do it. Time to pay and get out of here.";
+
+    private int totalItems;      // how many ShopItems are in the scene
+    private int collectedItems;  // how many are in the basket
+
     void Awake()
     {
         Instance = this;
@@ -38,6 +46,8 @@ public class StoryManager : MonoBehaviour
 
     void Start()
     {
+        // Every ShopItem in the scene is on the shopping list.
+        totalItems = FindObjectsByType<ShopItem>(FindObjectsSortMode.None).Length;
         StartCoroutine(Opening());
     }
 
@@ -54,7 +64,7 @@ public class StoryManager : MonoBehaviour
         GameUI.Instance.SetObjective("Head into the store");
     }
 
-    // Called by StoryTrigger (and later by other scripts) when something happens in the world.
+    // Called by StoryTrigger and the interactable scripts when something happens in the world.
     // "id" says what happened, e.g. "EnteredStore".
     public void OnEvent(string id)
     {
@@ -72,14 +82,43 @@ public class StoryManager : MonoBehaviour
             stage = Stage.GrabBasket;
             StartCoroutine(SetObjectiveAfterSpeech("Grab a basket"));
         }
+        else if (stage == Stage.GrabBasket && id == "PickedUpBasket")
+        {
+            stage = Stage.GrabSnacks;
+            GameUI.Instance.SetObjective(ShoppingObjective());
+        }
+        else if (stage == Stage.GrabSnacks && id == "ItemCollected")
+        {
+            collectedItems++;
+            if (collectedItems < totalItems)
+            {
+                GameUI.Instance.SetObjective(ShoppingObjective());   // updates the count (and flashes)
+            }
+            else
+            {
+                stage = Stage.PayForItems;
+                GameUI.Instance.Say("You", allItemsLine);
+                StartCoroutine(SetObjectiveAfterSpeech("Pay for your items"));
+            }
+        }
+    }
+
+    // e.g. "Grab snacks and beer (1/3)"
+    string ShoppingObjective()
+    {
+        return "Grab snacks and beer (" + collectedItems + "/" + totalItems + ")";
     }
 
     // Hide the objective, wait until all queued subtitles have finished, then show the new one.
+    // If the story moves on while we wait (e.g. the player grabs the basket mid-sentence),
+    // this objective is out of date, so it's skipped.
     IEnumerator SetObjectiveAfterSpeech(string objective)
     {
+        Stage startedIn = stage;
         GameUI.Instance.SetObjective("");
         while (GameUI.Instance.IsSpeaking)
             yield return null;   // wait one frame, then check again
-        GameUI.Instance.SetObjective(objective);
+        if (stage == startedIn)
+            GameUI.Instance.SetObjective(objective);
     }
 }
