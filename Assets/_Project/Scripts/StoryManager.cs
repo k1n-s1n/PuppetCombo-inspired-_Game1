@@ -23,6 +23,7 @@ public class StoryManager : MonoBehaviour
         PayForItems,  // everything collected, objective "Pay for your items"
         Checkout,     // talking to the cashier (Cashier.cs runs this part)
         ReturnToCar,  // got the bag, objective "Head back to your car"
+        Ended,        // drove off: fade to black and "End of Chapter 1" (CarEnding.cs)
     }
 
     [Tooltip("Where the player is in the story right now (shown for debugging; changes while playing).")]
@@ -137,6 +138,10 @@ public class StoryManager : MonoBehaviour
         {
             saidLeftStoreLine = true;
             GameUI.Instance.Say("You", leftStoreLine);
+        }
+        else if (stage == Stage.ReturnToCar && id == "ChapterEnded")
+        {
+            stage = Stage.Ended;
         }
     }
 

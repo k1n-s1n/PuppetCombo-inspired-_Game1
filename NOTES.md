@@ -21,6 +21,9 @@ Running log for the report: scripts written and third-party assets used (with so
 | `IDCard.cs` | `Assets/_Project/Scripts/` | On the GameUI object. Draws the student ID card (OnGUI) with name, **student number 33010198**, date of birth, course; all fields editable in the Inspector. Text scales with the screen size. |
 | `HeadLook.cs` | `Assets/_Project/Scripts/` | On the cashier, customer and jumpscare characters. In LateUpdate (after animation), turns the Humanoid head bone towards the player's camera while the player is inside the character's field of view and range; yaw/pitch clamped to a natural range, smoothly blended in and out. Without an animation playing it resets the head to its rest pose each frame so turns don't add up. |
 | `Jumpscare.cs` | `Assets/_Project/Scripts/` | On the redneck. Triggered when the player walks out of the toilet: he rushes from the shop floor to just in front of the camera in 0.3 s as a black silhouette (MaterialPropertyBlock tint), the camera shakes (optional sting sound), the shadow fades off, he complains, then walks through a path of points into the toilet (opening the door if shut), disappears and the door shuts. Player frozen until he's done talking. |
+| `ArmPose.cs` | `Assets/_Project/Scripts/` | On the cashier. Lowers the arms out of the model's T-pose once at Start by rotating the Humanoid upper-arm bones around the body's forward axis (and bending the elbows slightly). Does nothing if an Animator Controller is assigned (an animation then poses the arms). |
+| `CarEnding.cs` | `Assets/_Project/Scripts/` | On the player's car. At "Head back to your car", E ("Drive off") freezes the player, hides the HUD, fades to black (OnGUI) and shows "END OF CHAPTER 1 / To be continued...". Earlier, it just says the player can't leave without the snacks. |
+| `TextOnSurface.shader` | `Assets/_Project/Shaders/` | BRP shader for 3D TextMesh text (licence plates). Unity's default font shader draws through walls; this one depth-tests like normal geometry, uses the font texture's alpha for letter shapes, and applies scene fog. Material `Plate_Text.mat`. |
 
 ## Third-party assets
 
@@ -28,10 +31,10 @@ Running log for the report: scripts written and third-party assets used (with so
 |---|---|---|---|---|---|
 | 6TWELVE (PSX-style convenience store, with road, parking lot and forest backdrop) | Elbolillo (Sketchfab: Elbolilloduro) | https://sketchfab.com/3d-models/6twelve-8c2c49cab08e402d8681434a4ade4ed0 | CC Attribution 4.0 | `Assets/ThirdParty/6twelve/` | Imported the author's original FBX + textures (from `source/6twelve.rar` in the Sketchfab download). ~18.8k triangles, 88 materials. Kept unmodified. |
 | psx_retroshader (PS1-style shaders, cPrecision image effect) | dsoft20 | https://github.com/dsoft20/psx_retroshader | MIT | `Assets/ThirdParty/psx_retroshader/` | Imported by the developer, not used yet (may be used later). Removed its obsolete `UnityVS/` Visual Studio plugin DLLs (failed to load in Unity 6). |
-| Character Male 01 (cashier) | TBC | Sketchfab (TBC) | TBC | `Assets/ThirdParty/character--male-01/` | Mixamo-rigged, ~690 tris. Rig set to Humanoid in import settings. |
-| Asian Girl PS1/PS2 character (customer) | mcpato (TBC) | Sketchfab (TBC) | TBC | `Assets/ThirdParty/asian-girl-ps1ps2-character-mcpato/` | ~13.7k tris. Rig set to Humanoid. |
-| Redneck character PSX style (jumpscare) | TBC | Sketchfab (TBC) | TBC | `Assets/ThirdParty/redneck-character-psx-style/` | ~626 tris. FBX extracted from the included `redneck.zip`. Rig set to Humanoid. |
-| PSX Sedan (car, not used yet) | jonniemadeit (TBC) | TBC | TBC | `Assets/ThirdParty/psx-sedan-car-jonniemadeit/` | Still zipped. |
+| Character_ Male_01 (cashier) | Elbolillo (Sketchfab: Elbolilloduro) | https://sketchfab.com/3d-models/character--male-01-4d6197eb065045648ba952baeed01341 | CC Attribution 4.0 | `Assets/ThirdParty/character--male-01/` | Mixamo-rigged, ~690 tris. Rig set to Humanoid in import settings. |
+| Asian Girl PS1/PS2 Character (customer) | McPato | https://sketchfab.com/3d-models/asian-girl-ps1ps2-character-mcpato-dae6f2d7e60e4a37be25a36ed082e16c | CC Attribution 4.0 | `Assets/ThirdParty/asian-girl-ps1ps2-character-mcpato/` | ~13.7k tris. Rig set to Humanoid. |
+| Redneck Character PSX Style (jumpscare) | vinrax | https://sketchfab.com/3d-models/redneck-character-psx-style-7b02de568d7c491b8be7bc50246789ad | CC Attribution 4.0 | `Assets/ThirdParty/redneck-character-psx-style/` | ~626 tris. FBX extracted from the included `redneck.zip`. Rig set to Humanoid. |
+| PSX Sedan (player's car) | jonniemadeit (TBC) | TBC | TBC | `Assets/ThirdParty/psx-sedan-car-jonniemadeit/` | `car.fbx` + texture variants extracted from the included zip. ~175 tris. Scaled 1.3x. |
 | Unity_PostEffect (BadTV, RGBShift, Posterize, Scanlines, etc. + WebCam demo) | tasdidahmedtah | https://github.com/tasdidahmedtah/Unity_PostEffect | No licence stated in repo | `Assets/ThirdParty/Unity_PostEffect/` | Imported by the developer. RGBShift, Posterize, Scanlines and BadTV are on the PlayerCamera for the VHS look. Its demo scene (`Main.unity`) was removed. |
 
 ## Scene setup (not scripts, but worth mentioning in the report)
@@ -47,8 +50,8 @@ Running log for the report: scripts written and third-party assets used (with so
 - `Trigger_LeftStore` just outside the front doors plays "That guy gave me the creeps." after checkout.
 - Player and the story triggers are on the Ignore Raycast layer so they never block the E interaction ray.
 - Characters (`Characters` object): `Customer_Girl` browsing the middle aisle (static for now, stares as you pass), `Jumpscare_Redneck` (hidden until the jumpscare) with `JumpscareStart` and `JumpscareWalkPath` points. The placeholder cashier's body was replaced with Character Male 01 (scale 0.9). `Trigger_LeftToilet` just outside the toilet door.
-- To do: characters have no animations yet (cashier stands in a T-pose); needs Mixamo Idle / Walking clips.
-- To do: no car in the scene yet (needed for the ending and the licence plate).
+- `PlayerCar`: PSX Sedan parked nose-in towards the store beside the player's start, box collider, `CarEnding`. Front and rear `LicencePlate_*` objects: cream backing with "HOLLOW PINES" and the student number **33010198** as TextMesh text (built-in LegacyRuntime font) using `Plate_Text.mat`.
+- To do: characters have no animations yet (cashier uses ArmPose instead of an idle); Mixamo Idle / Walking would let the customer wander.
 
 ## Asset findings / to-do
 
