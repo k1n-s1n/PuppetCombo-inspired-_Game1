@@ -9,6 +9,9 @@ public class ShopItem : MonoBehaviour, IInteractable
     [Tooltip("Name shown in the prompt, e.g. \"chips\" gives \"Take chips\".")]
     public string itemName = "chips";
 
+    [Tooltip("Where the item sits inside the basket (relative to the basket: x = right, y = up, z = away from you).")]
+    public Vector3 positionInBasket = Vector3.zero;
+
     [Tooltip("How the item is rotated once it's inside the basket, in degrees.")]
     public Vector3 rotationInBasket = Vector3.zero;
 

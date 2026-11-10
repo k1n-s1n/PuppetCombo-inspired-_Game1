@@ -137,7 +137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopItem
   itemName: chips
-  rotationInBasket: {x: -55, y: 0, z: 0}
+  positionInBasket: {x: -0.1, y: 0.02, z: -0.06}
+  rotationInBasket: {x: -35, y: 15, z: 0}
 --- !u!65 &7897683097286302493
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -128,12 +128,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 329456185}
     m_Modifications:
     - target: {fileID: 3407107893060404944, guid: 07e1b3df0c5ff1840891526b73d1c0be, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407107893060404944, guid: 07e1b3df0c5ff1840891526b73d1c0be, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407107893060404944, guid: 07e1b3df0c5ff1840891526b73d1c0be, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407107893060404944, guid: 07e1b3df0c5ff1840891526b73d1c0be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.35
       objectReference: {fileID: 0}
     - target: {fileID: 3407107893060404944, guid: 07e1b3df0c5ff1840891526b73d1c0be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.27
+      value: 0.315
       objectReference: {fileID: 0}
     - target: {fileID: 3407107893060404944, guid: 07e1b3df0c5ff1840891526b73d1c0be, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2421,12 +2433,24 @@ PrefabInstance:
       value: BasketDeco
       objectReference: {fileID: 0}
     - target: {fileID: 2924237224513340868, guid: 50758909e12651546a5ead433260f770, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924237224513340868, guid: 50758909e12651546a5ead433260f770, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924237224513340868, guid: 50758909e12651546a5ead433260f770, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924237224513340868, guid: 50758909e12651546a5ead433260f770, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.35
       objectReference: {fileID: 0}
     - target: {fileID: 2924237224513340868, guid: 50758909e12651546a5ead433260f770, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.17
+      value: 0.185
       objectReference: {fileID: 0}
     - target: {fileID: 2924237224513340868, guid: 50758909e12651546a5ead433260f770, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3308,6 +3332,18 @@ PrefabInstance:
     - target: {fileID: 2731995654171926972, guid: 50758909e12651546a5ead433260f770, type: 3}
       propertyPath: m_Name
       value: BasketDeco
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924237224513340868, guid: 50758909e12651546a5ead433260f770, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924237224513340868, guid: 50758909e12651546a5ead433260f770, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924237224513340868, guid: 50758909e12651546a5ead433260f770, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 2924237224513340868, guid: 50758909e12651546a5ead433260f770, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4641,15 +4677,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4845365676460760570, guid: 827c1521fd6b8dd4d8974e02a0b17139, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.3
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 4845365676460760570, guid: 827c1521fd6b8dd4d8974e02a0b17139, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.3
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 4845365676460760570, guid: 827c1521fd6b8dd4d8974e02a0b17139, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.3
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 4845365676460760570, guid: 827c1521fd6b8dd4d8974e02a0b17139, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4807,6 +4843,18 @@ PrefabInstance:
     - target: {fileID: 7560547930813135768, guid: 264d94e62c84c934faf0da1130a3f430, type: 3}
       propertyPath: m_Name
       value: Item_Beer
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023440611082219283, guid: 264d94e62c84c934faf0da1130a3f430, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023440611082219283, guid: 264d94e62c84c934faf0da1130a3f430, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023440611082219283, guid: 264d94e62c84c934faf0da1130a3f430, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 9023440611082219283, guid: 264d94e62c84c934faf0da1130a3f430, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5914,12 +5962,24 @@ PrefabInstance:
       value: BasketDeco
       objectReference: {fileID: 0}
     - target: {fileID: 2924237224513340868, guid: 50758909e12651546a5ead433260f770, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924237224513340868, guid: 50758909e12651546a5ead433260f770, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924237224513340868, guid: 50758909e12651546a5ead433260f770, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924237224513340868, guid: 50758909e12651546a5ead433260f770, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.35
       objectReference: {fileID: 0}
     - target: {fileID: 2924237224513340868, guid: 50758909e12651546a5ead433260f770, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.22
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2924237224513340868, guid: 50758909e12651546a5ead433260f770, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8733,6 +8793,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1139148675}
     m_Modifications:
+    - target: {fileID: 1929526124498347728, guid: b706f26f5c9f73c4b87ecae2a76346e6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929526124498347728, guid: b706f26f5c9f73c4b87ecae2a76346e6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929526124498347728, guid: b706f26f5c9f73c4b87ecae2a76346e6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1929526124498347728, guid: b706f26f5c9f73c4b87ecae2a76346e6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.3
