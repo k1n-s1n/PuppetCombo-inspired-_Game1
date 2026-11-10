@@ -45,6 +45,8 @@ public class Jumpscare : MonoBehaviour
     [TextArea] public string complaint1 = "FINALLY! Jeez, kid, what were you doin' in there? I been waitin' forever!";
     [TextArea] public string complaint2 = "Outta my way, I'm 'bout to bust!";
     [TextArea] public string playerReply = "...Good luck in there, heh.";
+    [Tooltip("Shown when the player tries the toilet door after he's gone in.")]
+    public string lockedDoorMessage = "Can't go in. The creep's still in there.";
 
     private Renderer[] renderers;
     private MaterialPropertyBlock block;
@@ -115,7 +117,13 @@ public class Jumpscare : MonoBehaviour
             }
         }
         body.SetActive(false);
-        if (toiletDoor != null) toiletDoor.Close();
+        if (toiletDoor != null)
+        {
+            // He's in there now: shut and lock the door so the player can't follow him in.
+            toiletDoor.Close();
+            toiletDoor.isLocked = true;
+            toiletDoor.lockedMessage = lockedDoorMessage;
+        }
 
         while (GameUI.Instance.IsSpeaking) yield return null;
         StoryManager.Instance.OnEvent("JumpscareFinished");
