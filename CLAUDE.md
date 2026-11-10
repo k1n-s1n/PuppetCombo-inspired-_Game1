@@ -16,7 +16,7 @@ This is **university coursework** (CS3VR "Simpler Individual Virtual World / Gam
 - **Textures** on both the building and the environment, in appropriate colours.
 - **Movement** that is easy to navigate. Mouse turning must NOT be too fast (markers explicitly penalise this). Expose mouse sensitivity and move speed in the Inspector.
 - **Interaction** with the world: the more, the better, as long as it works reliably.
-- The developer's **student number** must be in the world, easy to find, and fit the theme (e.g. house number on a mailbox by the entrance, or a VHS tape label). Student number: `33010198`.
+- The developer's **student number** must be in the world, easy to find, and fit the theme (licence plate on the player's car + ID card at the checkout). Student number: `33010198`.
 
 ## How it is marked (prioritise accordingly)
 | Area | Weight |
@@ -32,11 +32,46 @@ This is **university coursework** (CS3VR "Simpler Individual Virtual World / Gam
 
 Novelty + interaction = 35%. A clear purpose (a simple game objective) and several working interactions are worth more than extra visual polish.
 
-## Game concept (draft, developer may change)
-- Setting: an isolated house in a dark forest at night.
-- Objective: explore, find a key and collectible items (e.g. VHS tapes), unlock a locked door, then escape.
-- Planned interactions: doors opened with E, a locked door + key, flashlight toggle, pickups that show text on screen, an objective / "you escaped" ending, ambient sound and at least one scare event.
-- Optional extra if time allows: a key to toggle the retro effects on/off.
+## Game concept (final)
+Setting: a convenience store beside a dark road, surrounded by dense forest, on a foggy night. The player is a junky teenager on the way to meet friends who are exploring an abandoned house rumoured to be linked to a serial killer. The friends text asking the player to grab snacks on the way. This scene is the first chapter and ends when the player drives off.
+
+Story beats, in order:
+1. Scene opens with the player stepping out of their car parked outside the store. Subtitle (speech bar at the bottom of the screen): an annoyed comment about having to run snack errands for the friends.
+2. On entering the store, objective (top of screen): "Use the toilet".
+3. Toilet minigame: the player aims a stream into the toilet; a progress bar fills only while the aim hits the bowl. Keep it cartoony, not explicit.
+4. On leaving: subtitle "What a mess... not my problem, heh."
+5. Jumpscare on exiting the toilet: a customer suddenly appears close up with a loud sting, complaining the player took forever and they're desperate.
+6. Objective: "Grab a basket". Once the basket is held, objective: "Grab snacks and beer". Items are picked up from different shelves and appear inside the held basket.
+7. When everything is collected, objective: "Pay for your items".
+8. The cashier and any customers turn their heads to track the player's camera while the player is in their field of view (rotate the head bone in LateUpdate, clamped to a natural angle range). This is the creepy indie-horror stare.
+9. Player places the basket on the counter and talks to the cashier. He asks the player's name, with a dialogue choice:
+   - Tell him: the conversation continues and he warns the player about people going missing in the area and to be careful.
+   - Refuse: player says "None of your business, old timer, scan my stuff and let me get going." The cashier replies "You'll get what's coming for ya" and the rest of the payment happens in silence.
+10. The cashier states the total and asks for ID. The player shows an ID card on screen showing the student number and other details.
+11. Player gets the items in a bag, walks back to the car, subtitle: "That guy gave me the creeps." Interacting with the car fades to black and shows an "End of Chapter 1" screen. No driving needed.
+
+Student number: also show it on the car's licence plate so it's visible at the start, as well as on the ID card at the end.
+
+### Jumpscare (beat 5), how it should look
+The whole sequence is fast (a second or two before the dialogue starts):
+1. The customer moves very quickly into frame, their body covered by a dark shadow at first.
+2. The screen shakes as they appear (with the loud sting).
+3. Once they're in position (centre of the screen, close up), the shadow clears and they become fully visible.
+4. Then the complaint dialogue starts.
+
+### Customers (beat 8), how they behave
+- About 2 customers standing in the store, looking at shelves and shopping.
+- Movement is simple and basic (e.g. idle at a shelf, occasionally walk to another spot). No complex AI.
+- They stare at the player (head tracking) when the player walks past them.
+
+## Build priority (deadline: world finished Wednesday night)
+Build in tiers. Finish and test each tier in Play mode before starting the next, so there's always a complete, working game.
+- Tier 1 (core loop): reusable subtitle + objective UI system; doors that open with E (front door, toilet door); basket and item pickups shown in the basket; cashier dialogue with the name choice and both branches; ID card with student number; walk to car, fade to black, end screen; licence plate with student number.
+- Tier 2 (creepy polish): head tracking on cashier and customers; jumpscare customer.
+- Tier 3 (if time allows): the toilet aiming minigame. Until it's built, use a simple placeholder (e.g. hold E for a few seconds while a bar fills) so the story still flows.
+
+## References
+Visual references for the jumpscare, character movement and interactions go in a `References/` folder in the project root (outside Assets). Check there before building those features. The folder is empty for now: the developer will add references later. Until then, follow the written descriptions above.
 
 ## Tech stack
 - **Unity 6.3 LTS**, **Built-in Render Pipeline (BRP)**. Do NOT use URP/HDRP shaders, packages or APIs. Any shader written or imported must be BRP-compatible.
